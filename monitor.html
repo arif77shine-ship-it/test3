@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tampilan Monitor Antrian</title>
+  <link rel="stylesheet" href="monitor.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo" class="logo">
+    <h1>PT Layanan Prima</h1>
+    <button onclick="toggleFullscreen()" class="fullscreen-btn">⛶</button>
+  </header>
+
+  <main class="container">
+    <section class="antrian-display">
+      <h2>Antrian Sedang Dipanggil</h2>
+      <div class="antrian-box">
+        <span id="jenisLayanan">-</span>
+        <h1 id="nomorAntrian">-</h1>
+      </div>
+    </section>
+
+    <section class="video-display">
+      <video id="videoPromosi" autoplay muted loop>
+        <source src="promosi.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video.
+      </video>
+    </section>
+  </main>
+
+  <script src="monitor.js"></script>
+</body>
+</html>

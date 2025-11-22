@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Pemanggilan Antrian 4 Ruang</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header dengan logo + nama perusahaan -->
+  <header>
+    <div class="header-right">
+      <img src="asset/logo smk.png" alt="Logo" class="logo">
+      <span class="nama-perusahaan">PT Aqilah Hidayah Syariah</span>
+      <button id="fullscreenBtn">⛶ Fullscreen</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Ruang 1 -->
+    <div class="antrian" id="ruang1">
+      <h1>Ruang 1</h1>
+      <div id="nomor-antrian-1">A001</div>
+      <button onclick="panggilAntrian(1)">Panggil</button>
+      <button onclick="nextAntrian(1)">Selanjutnya</button>
+    </div>
+
+    <!-- Ruang 2 -->
+    <div class="antrian" id="ruang2">
+      <h1>Ruang 2</h1>
+      <div id="nomor-antrian-2">B001</div>
+      <button onclick="panggilAntrian(2)">Panggil</button>
+      <button onclick="nextAntrian(2)">Selanjutnya</button>
+    </div>
+
+    <!-- Ruang 3 -->
+    <div class="antrian" id="ruang3">
+      <h1>Ruang 3</h1>
+      <div id="nomor-antrian-3">C001</div>
+      <button onclick="panggilAntrian(3)">Panggil</button>
+      <button onclick="nextAntrian(3)">Selanjutnya</button>
+    </div>
+
+    <!-- Ruang 4 (Video Layanan) -->
+    <div class="layanan">
+      <video id="videoLayanan" autoplay muted loop>
+        <source src="asset/sampai jumpa smp 2025.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video.
+      </video>
+    </div>
+  </div>
+
+  <!-- Suara Panggilan -->
+  <audio id="audioPanggilan"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
