@@ -6,44 +6,41 @@
   }
   
   body {
-    background: #f0f0f0;
+    background: #f8f9fa;
     height: 100vh;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   
   /* Header */
   header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    padding: 10px 20px;
-    background: rgba(29, 53, 87, 0.9);
+    position: relative;
+    text-align: center;
+    background: #1d3557;
+    color: #fff;
+    padding: 15px 20px;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .header-right {
-    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 15px;
   }
   
-  .logo {
-    height: 40px;
-    width: 40px;
+  header .logo {
+    height: 50px;
+    width: 50px;
     object-fit: contain;
   }
   
-  .nama-perusahaan {
-    font-size: 1.2rem;
+  header .nama-perusahaan {
+    font-size: 1.6rem;
     font-weight: bold;
-    color: #fff;
   }
   
   #fullscreenBtn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     background: #e63946;
     color: #fff;
     border: none;
@@ -57,66 +54,71 @@
     background: #d62828;
   }
   
-  /* Container antrian */
+  /* Container utama */
   .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 10px;
-    width: 95%;
-    height: 90vh;
-    margin: 70px auto 10px auto; /* supaya tidak tertutup header */
+    grid-template-columns: 1fr 1.5fr;
+    flex: 1;
+    overflow: hidden;
   }
   
+  /* Antrian */
   .antrian {
-    background: linear-gradient(135deg, #1d3557, #457b9d);
+    background: linear-gradient(135deg, #457b9d, #1d3557);
     color: #fff;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
   }
   
-  .antrian h1 {
-    font-size: 1.8rem;
+  .antrian h2 {
     margin-bottom: 15px;
   }
   
-  [id^="nomor-antrian"] {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 15px;
+  .layanan-box {
     background: #f1faee;
     color: #1d3557;
-    padding: 10px 30px;
-    border-radius: 10px;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: center;
+    width: 80%;
   }
   
-  .antrian button {
+  .layanan-box h3 {
+    margin-bottom: 10px;
+  }
+  
+  .layanan-box div {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .layanan-box button {
     background: #e63946;
     color: #fff;
     border: none;
     padding: 10px 15px;
-    margin: 5px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
     transition: 0.3s;
   }
   
-  .antrian button:hover {
+  .layanan-box button:hover {
     background: #d62828;
   }
   
-  .layanan {
-    border-radius: 12px;
+  /* Video */
+  .video-box {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
   }
   
-  .layanan video {
+  .video-box video {
     width: 100%;
     height: 100%;
     object-fit: cover;

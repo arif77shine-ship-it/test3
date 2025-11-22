@@ -3,49 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aplikasi Pemanggilan Antrian 4 Ruang</title>
+  <title>Pemanggilan Antrian Peserta</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header dengan logo + nama perusahaan -->
+  <!-- Header dengan logo dan nama perusahaan -->
   <header>
-    <div class="header-right">
-      <img src="asset/logo smk.png" alt="Logo" class="logo">
-      <span class="nama-perusahaan">PT Aqilah Hidayah Syariah</span>
-      <button id="fullscreenBtn">⛶ Fullscreen</button>
-    </div>
+    <img src="asset/logo smk.png" alt="Logo" class="logo">
+    <h1 class="nama-perusahaan">PT Aqilah Hidayah Syariah</h1>
+    <button id="fullscreenBtn">⛶ Fullscreen</button>
   </header>
 
   <div class="container">
-    <!-- Ruang 1 -->
-    <div class="antrian" id="ruang1">
-      <h1>Ruang 1</h1>
-      <div id="nomor-antrian-1">A001</div>
-      <button onclick="panggilAntrian(1)">Panggil</button>
-      <button onclick="nextAntrian(1)">Selanjutnya</button>
+    <!-- Bagian Antrian -->
+    <div class="antrian">
+      <h2>Nomor Antrian Dipanggil</h2>
+
+      <div class="layanan-box">
+        <h3>Customer Service</h3>
+        <div id="cs-antrian">CS001</div>
+        <button onclick="nextAntrian('cs')">Panggil Berikutnya</button>
+      </div>
+
+      <div class="layanan-box">
+        <h3>Pembayaran</h3>
+        <div id="pay-antrian">P001</div>
+        <button onclick="nextAntrian('pay')">Panggil Berikutnya</button>
+      </div>
+
+      <div class="layanan-box">
+        <h3>Pengambilan Produk</h3>
+        <div id="prod-antrian">PR001</div>
+        <button onclick="nextAntrian('prod')">Panggil Berikutnya</button>
+      </div>
     </div>
 
-    <!-- Ruang 2 -->
-    <div class="antrian" id="ruang2">
-      <h1>Ruang 2</h1>
-      <div id="nomor-antrian-2">B001</div>
-      <button onclick="panggilAntrian(2)">Panggil</button>
-      <button onclick="nextAntrian(2)">Selanjutnya</button>
-    </div>
-
-    <!-- Ruang 3 -->
-    <div class="antrian" id="ruang3">
-      <h1>Ruang 3</h1>
-      <div id="nomor-antrian-3">C001</div>
-      <button onclick="panggilAntrian(3)">Panggil</button>
-      <button onclick="nextAntrian(3)">Selanjutnya</button>
-    </div>
-
-    <!-- Ruang 4 (Video Layanan) -->
-    <div class="layanan">
-      <video id="videoLayanan" autoplay muted loop>
+    <!-- Bagian Video Promosi -->
+    <div class="video-box">
+      <video id="videoPromosi" autoplay muted loop>
         <source src="asset/sampai jumpa smp 2025.mp4" type="video/mp4">
-        Browser Anda tidak mendukung video.
+        Browser anda tidak mendukung video.
       </video>
     </div>
   </div>

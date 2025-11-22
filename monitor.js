@@ -1,13 +1,35 @@
-function updateMonitor(data) {
-    document.getElementById("nomorAntrian").textContent = data.nomor;
-    document.getElementById("jenisLayanan").textContent = data.layanan;
+function playBellAndSpeak(text) {
+    const bell = document.getElementById("bellSound");
+    bell.play().then(() => {
+      // Tunggu bel selesai (sekitar 1.5 detik)
+      setTimeout(() => {
+        let speech = new SpeechSynthesisUtterance(text);
+        speech.lang = "id-ID";
+        window.speechSynthesis.speak(speech);
+      }, 1500);
+    });
+  }
   
-    // Suara panggilan
-    let speech = new SpeechSynthesisUtterance(
-      `Nomor antrian ${data.nomor}, silakan menuju ${data.layanan}`
-    );
-    speech.lang = "id-ID";
-    window.speechSynthesis.speak(speech);
+  function updateMonitor(data) {
+    const nomorEl = document.getElementById("nomorAntrian");
+    const layananEl = document.getElementById("jenisLayanan");
+  
+    // Reset animasi
+    nomorEl.classList.remove("show-number");
+    layananEl.classList.remove("show-text");
+  
+    // Update teks
+    nomorEl.textContent = data.nomor;
+    layananEl.textContent = data.layanan;
+  
+    // Trigger animasi
+    setTimeout(() => {
+      nomorEl.classList.add("show-number");
+      layananEl.classList.add("show-text");
+    }, 50);
+  
+    // Mainkan bel + suara panggilan
+    playBellAndSpeak(`Nomor antrian ${data.nomor}, silakan menuju ${data.layanan}`);
   }
   
   // Cek perubahan data dari localStorage
@@ -18,7 +40,7 @@ function updateMonitor(data) {
     }
   });
   
-  // Saat pertama kali load, ambil data terakhir
+  // Load data terakhir saat awal
   window.onload = () => {
     const saved = localStorage.getItem("antrianTerakhir");
     if (saved) {

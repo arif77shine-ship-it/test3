@@ -1,38 +1,51 @@
-// Simpan nomor antrian masing-masing ruang
+// Simpan nomor antrian untuk tiap layanan
 let antrian = {
-    1: 1,
-    2: 1,
-    3: 1
+    cs: 1,
+    pay: 1,
+    prod: 1
   };
   
-  function formatNomor(ruang, num) {
-    let prefix = ruang === 1 ? "A" : ruang === 2 ? "B" : "C";
-    return prefix + num.toString().padStart(3, "0");
+  function formatNomor(layanan, num) {
+    if (layanan === "cs") return "CS" + num.toString().padStart(3, "0");
+    if (layanan === "pay") return "P" + num.toString().padStart(3, "0");
+    if (layanan === "prod") return "PR" + num.toString().padStart(3, "0");
   }
   
-  function updateDisplay(ruang) {
-    document.getElementById(`nomor-antrian-${ruang}`).textContent = formatNomor(ruang, antrian[ruang]);
+  function updateDisplay(layanan) {
+    if (layanan === "cs")
+      document.getElementById("cs-antrian").textContent = formatNomor("cs", antrian.cs);
+    if (layanan === "pay")
+      document.getElementById("pay-antrian").textContent = formatNomor("pay", antrian.pay);
+    if (layanan === "prod")
+      document.getElementById("prod-antrian").textContent = formatNomor("prod", antrian.prod);
   }
   
-  function panggilAntrian(ruang) {
-    const nomor = formatNomor(ruang, antrian[ruang]);
+  function panggilAntrian(layanan) {
+    const nomor = formatNomor(layanan, antrian[layanan]);
+    let layananNama =
+      layanan === "cs"
+        ? "Customer Service"
+        : layanan === "pay"
+        ? "Pembayaran"
+        : "Pengambilan Produk";
+  
     let speech = new SpeechSynthesisUtterance(
-      `Nomor antrian ${nomor}, silakan menuju ruang ${ruang}`
+      `Nomor antrian ${nomor}, silakan menuju layanan ${layananNama}`
     );
     speech.lang = "id-ID";
     window.speechSynthesis.speak(speech);
   }
   
-  function nextAntrian(ruang) {
-    antrian[ruang]++;
-    updateDisplay(ruang);
-    panggilAntrian(ruang);
+  function nextAntrian(layanan) {
+    antrian[layanan]++;
+    updateDisplay(layanan);
+    panggilAntrian(layanan);
   }
   
-  // Inisialisasi semua ruang
-  updateDisplay(1);
-  updateDisplay(2);
-  updateDisplay(3);
+  // Inisialisasi tampilan
+  updateDisplay("cs");
+  updateDisplay("pay");
+  updateDisplay("prod");
   
   // Fullscreen handler
   document.getElementById("fullscreenBtn").addEventListener("click", () => {
